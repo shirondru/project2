@@ -5,16 +5,15 @@ class Graph:
     """
     Class to contain a graph and your bfs function
     """
-    def __init__(self, init_dict=None, filename = None):
+    def __init__(self, filename):
         """
         Initialization of graph object which serves as a container for 
         methods to load data and 
         
         """
-        if filename:
-            self.graph = nx.read_adjlist(filename, create_using=nx.DiGraph, delimiter=";")
-        else:
-            self.graph = nx.DiGraph(init_dict)
+        
+        self.graph = nx.read_adjlist(filename, create_using=nx.DiGraph, delimiter=";")
+        
     def __trace_path(self,parent,start,end=None):
         """
         This method traces back the path to find the end node by utilizing a dictionary `parent`, whose values
