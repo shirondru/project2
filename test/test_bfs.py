@@ -1,10 +1,10 @@
 # write tests for bfs
 import pytest
-from search import graph
+from search import Graph
 import os
 currentdir = os.getcwd() #GitHub/project2/
 
-@pytest.fixture
+# @pytest.fixture
 def test_bfs_traversal():
     """
     TODO: Write your unit test for a breadth-first
@@ -14,7 +14,7 @@ def test_bfs_traversal():
     the right number of nodes, in the right order, etc.)
     """
 
-    tiny_network = graph.Graph(os.path.join(currentdir,"data/tiny_network.adjlist"))
+    tiny_network = Graph(os.path.join(currentdir,"data/tiny_network.adjlist"))
 
     all_nodes = list(tiny_network.graph.nodes) #list of every node in tiny_network.adjlist
     traversal_results = tiny_network.bfs(start =all_nodes[0],end = None ) #will return order of traversal when end = None
@@ -24,7 +24,7 @@ def test_bfs_traversal():
 
 
     #The test above does not check the nodes were returned in the correct order
-    pass
+    
 
 def test_bfs():
     """
