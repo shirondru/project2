@@ -8,13 +8,11 @@ currentdir = os.getcwd() #GitHub/project2/
 # @pytest.fixture
 def test_bfs_traversal():
     """
-    TODO: Write your unit test for a breadth-first
-    traversal here. Create an instance of your Graph class 
-    using the 'tiny_network.adjlist' file and assert 
-    that all nodes are being traversed (ie. returns 
-    the right number of nodes, in the right order, etc.)
+    
     """
 
+
+    ############# Test 1 #############
     tiny_network = Graph(filename = os.path.join(currentdir,"data/tiny_network.adjlist"))
 
     all_nodes = list(tiny_network.graph.nodes) #list of every node in tiny_network.adjlist
@@ -24,9 +22,20 @@ def test_bfs_traversal():
     #This implicitly also tests the correct number of nodes were returned. Test that is the case
 
 
-    #The test above does not check the nodes were returned in the correct order
-    
+    ############# Test 2 #############
+    #The test above does not check the nodes were returned in the correct order. Here I test that it does using a simpler graph
 
+    test_dict = {
+    "A":["B","C","H"],
+    "B":["E","D"],
+    "C":["F","G"]
+    }
+
+    test_graph = Graph(input_dict = test_dict) #Instantiate Graph using dictionary I created. This graph is simpler than tiny_network so it is easy to assert the order of traversal a priori
+    assert test_graph.bfs(start = "A") == ["A","B","C","H","E","D","F","G"]
+    assert test_graph.bfs(start = "B") == ["B","E","D"]
+    assert test_graph.bfs(start = "C") == ["C","F","G"]
+    assert test_graph.bfs(start = "H") == ["H"]
 def test_bfs():
     """
     Test 1:
@@ -80,7 +89,7 @@ def test_bfs():
 
 
     ######### Test 2 #############
-    citation_network = Graph(filename = os.path.join(currentdir,"data/citation_network.adjlist"))
+    citation_network = Graph(filename = os.path.join(currentdir,"data/citation_network.adjlist")) #repeat Test 1 with larger citation network as an added test
     find_shortest_path(citation_network)
 
 
@@ -92,7 +101,7 @@ def test_bfs():
     "C":["F","G"]
     }
 
-    test_graph = Graph(test_dict) #Instantiate Graph using dictionary I created, and therefore know what paths do not exist a priori
+    test_graph = Graph(input_dict = test_dict) #Instantiate Graph using dictionary I created, and therefore know what paths do not exist a priori
 
     assert test_graph.bfs(start = "B", end = "C") == None #There is no path betwen these two nodes so bfs should return None
     assert test_graph.bfs(start = "B", end = "G") == None #There is no path betwen these two nodes so bfs should return None
