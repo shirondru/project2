@@ -61,11 +61,11 @@ def test_bfs_traversal():
     assert test_graph.bfs(start = "C", end = None) == ["C","F","G","K"]
     assert test_graph.bfs(start = "B", end = None) == ["B","E","D","H"]
 
-    assert True == False
-
+    print(currentdir)
+    print('hello')
 
     ############# Test 2 #############
-    tiny_network = Graph(filename = os.path.join(currentdir,"data/tiny_network.adjlist"))
+    tiny_network = Graph(filename = "./data/tiny_network.adjlist")
     all_nodes = list(tiny_network.graph.nodes)
     all_nodes.sort() #sort the nodes in place
     traversal_results = tiny_network.bfs(start = all_nodes[0], end = None) #Get order of traversal starting with an arbitrary node
