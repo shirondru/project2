@@ -5,15 +5,21 @@ class Graph:
     """
     Class to contain a graph and your bfs function
     """
-    def __init__(self, filename):
+    def __init__(self, filename=None, input_dict = None):
         """
         Initialization of graph object which serves as a container for 
         methods to load data and 
         
+        This class expects you to input either a filename or a dictionary to be read as a graph, not both
         """
+        if input_dict: 
+            self.graph = nx.DiGraph(input_dict) #if creating a graph out of a dictionary (like in test_bfs.py) it will be read here
+        else:
+            self.graph = nx.read_adjlist(filename, create_using=nx.DiGraph, delimiter=";") #For most cases, read a file path
         
-        self.graph = nx.read_adjlist(filename, create_using=nx.DiGraph, delimiter=";")
-        
+        if filename != None and input_dict != None:
+            raise ValueError("Expected only one input! Choose between a dictionary or file path!")
+
     def __trace_path(self,parent,start,end=None):
         """
         This method traces back the path to find the end node by utilizing a dictionary `parent`, whose values
