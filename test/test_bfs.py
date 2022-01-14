@@ -13,17 +13,7 @@ def test_bfs_traversal():
 
 
     ############# Test 1 #############
-    tiny_network = Graph(filename = os.path.join(currentdir,"data/tiny_network.adjlist"))
-
-    all_nodes = list(tiny_network.graph.nodes) #list of every node in tiny_network.adjlist
-    traversal_results = tiny_network.bfs(start =all_nodes[0],end = None ) #will return order of traversal when end = None
-    assert all_nodes.sort() == traversal_results.sort() #if bfs traversed graph correctly, it should have visited every node. 
-    #If that happened, then the sorted traversal_results list and sorted all_nodes list should be identical. 
-    #This implicitly also tests the correct number of nodes were returned. Test that is the case
-
-
-    ############# Test 2 #############
-    #The test above does not check the nodes were returned in the correct order. Here I test that it does using a simpler graph
+    # Here I test that bfs traverses a graoh in the expected breadth-first manner and returns nodes in the correct order
 
     test_dict = {
     "A":["B","C","H"],
