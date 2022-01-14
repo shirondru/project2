@@ -61,6 +61,8 @@ def test_bfs_traversal():
     assert test_graph.bfs(start = "C", end = None) == ["C","F","G","K"]
     assert test_graph.bfs(start = "B", end = None) == ["B","E","D","H"]
 
+    assert True == False
+
 
     ############# Test 2 #############
     tiny_network = Graph(filename = os.path.join(currentdir,"data/tiny_network.adjlist"))
