@@ -2,7 +2,6 @@
 import pytest
 from search import Graph 
 import os
-import random
 currentdir = os.getcwd() #GitHub/project2/ 
 
 
