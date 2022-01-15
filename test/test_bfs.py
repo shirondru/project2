@@ -93,6 +93,10 @@ def test_bfs():
     Instantiate a directed graph I made from a dictionary, and therefore I know what pairs of nodes do not have a path a priori. 
     I then assert run bfs on 5 pairs of nodes who do not have paths between then and test this returns None as expected.
 
+
+    Test 4:
+    Use the same graph from test 3 to triple-check that it finds the shortest path between nodes in that graph
+
     """
 
     
@@ -139,3 +143,15 @@ def test_bfs():
     assert test_graph.bfs(start = "C", end = "B") == None #There is no path betwen these two nodes so bfs should return None
     assert test_graph.bfs(start = "C", end = "H") == None #There is no path betwen these two nodes so bfs should return None
     assert test_graph.bfs(start = "G", end = "F") == None #There is no path betwen these two nodes so bfs should return None
+
+
+
+    ######### Test 4 #############
+    #Using a simple graph I created and whose shortest path between nodes is clear. Assert BFS finds those shortest paths
+    assert test_graph.bfs(start = "A", end = "E") == ["A","B","E"] 
+    assert test_graph.bfs(start = "A", end = "F") == ["A","C","F"]
+    assert test_graph.bfs(start = "A", end = "G") == ["A","C","G"] 
+ 
+ 
+
+
