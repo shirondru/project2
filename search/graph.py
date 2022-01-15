@@ -7,8 +7,8 @@ class Graph:
     """
     def __init__(self, filename=None, input_dict = None):
         """
-        This class expects you to input either a filename or a dictionary to be read as a graph, not both
-        The dictionary is used to easily load a simple test graph in test_bfs.py
+        This class expects you to input either a filename or a dictionary to be read as a graph, NOT both.
+        The option to input a dictionary exists in order to easily load a simple test graph in test_bfs.py.
         """
         if input_dict: #True if input_dict != None
             self.graph = nx.DiGraph(input_dict) #if creating a graph out of a dictionary (like in test_bfs.py) it will be read here
